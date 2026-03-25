@@ -1,0 +1,236 @@
+/*
+ * DESIGN PHILOSOPHY: "Sunrise Horizon" — Optimistic Impact-Driven Storytelling
+ * Movement: Contemporary Impact Design (UNDP/GIZ aesthetic with African warmth)
+ * Colors: Deep Teal #0F766E (primary), Sunrise Gold #EAB308 (accent), Warm Neutral #F8F4EF (bg)
+ * Typography: Fraunces (display) + Plus Jakarta Sans (body) + Space Grotesk (labels)
+ * Layout: Flowing sections, full-width image panels, timeline for SIYB process
+ */
+
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* AFI Custom Fonts */
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-label: 'Space Grotesk', system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.5rem;
+
+  /* AFI Brand Colors - Deep Teal + Sunrise Gold */
+  --primary: oklch(0.47 0.12 175);           /* Deep Teal #0F766E */
+  --primary-foreground: oklch(0.98 0.005 175);
+  --accent: oklch(0.78 0.17 85);             /* Sunrise Gold #EAB308 */
+  --accent-foreground: oklch(0.15 0.02 85);
+
+  /* Background: Warm Neutral */
+  --background: oklch(0.98 0.008 75);        /* #F8F4EF warm cream */
+  --foreground: oklch(0.12 0.015 250);       /* Near-black #0F172A */
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.12 0.015 250);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.12 0.015 250);
+
+  --secondary: oklch(0.94 0.015 175);        /* Light teal tint */
+  --secondary-foreground: oklch(0.35 0.1 175);
+
+  --muted: oklch(0.93 0.01 75);
+  --muted-foreground: oklch(0.5 0.02 250);
+
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
+
+  --border: oklch(0.88 0.015 75);
+  --input: oklch(0.88 0.015 75);
+  --ring: oklch(0.47 0.12 175);
+
+  --chart-1: oklch(0.47 0.12 175);
+  --chart-2: oklch(0.78 0.17 85);
+  --chart-3: oklch(0.6 0.14 175);
+  --chart-4: oklch(0.65 0.15 85);
+  --chart-5: oklch(0.35 0.1 175);
+
+  --sidebar: oklch(0.12 0.015 250);
+  --sidebar-foreground: oklch(0.98 0.005 175);
+  --sidebar-primary: oklch(0.78 0.17 85);
+  --sidebar-primary-foreground: oklch(0.12 0.015 250);
+  --sidebar-accent: oklch(0.2 0.02 250);
+  --sidebar-accent-foreground: oklch(0.98 0.005 175);
+  --sidebar-border: oklch(0.25 0.02 250);
+  --sidebar-ring: oklch(0.47 0.12 175);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+  h4, h5, h6 {
+    font-family: var(--font-label);
+    letter-spacing: -0.01em;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+      max-width: 1280px;
+    }
+  }
+
+  /* AFI Custom Utilities */
+  .font-display {
+    font-family: var(--font-display);
+  }
+  .font-body {
+    font-family: var(--font-body);
+  }
+  .font-label {
+    font-family: var(--font-label);
+  }
+
+  /* Gold accent line before section headings */
+  .section-label {
+    font-family: var(--font-label);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: oklch(0.78 0.17 85);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .section-label::before {
+    content: '';
+    display: inline-block;
+    width: 2rem;
+    height: 2px;
+    background: oklch(0.78 0.17 85);
+    border-radius: 1px;
+  }
+
+  /* Gradient text utility */
+  .gradient-text {
+    background: linear-gradient(135deg, oklch(0.47 0.12 175), oklch(0.78 0.17 85));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Wave SVG divider */
+  .wave-divider {
+    overflow: hidden;
+    line-height: 0;
+  }
+
+  /* Smooth scroll */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: oklch(0.93 0.01 75);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: oklch(0.47 0.12 175);
+    border-radius: 3px;
+  }
+
+  /* Focus visible */
+  :focus-visible {
+    outline: 2px solid oklch(0.47 0.12 175);
+    outline-offset: 2px;
+  }
+}
