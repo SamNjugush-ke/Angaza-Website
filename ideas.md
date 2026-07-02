@@ -15,6 +15,7 @@ A professional NGO/development organization website for Angaza Future Internatio
 
 **Core Principles:**
 - Warmth through earthy gold tones contrasted with deep forest greens
+- 
 - Asymmetric editorial layouts inspired by African textile patterns
 - Data-forward storytelling — impact numbers as visual anchors
 - Purposeful whitespace as a sign of confidence and clarity
