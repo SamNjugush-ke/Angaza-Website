@@ -1,5 +1,14 @@
 name = "angaza-website"
 compatibility_date = "2025-01-15"
+workers_dev = false
+
+[[routes]]
+pattern = "angazafuture.org"
+custom_domain = true
+
+[[routes]]
+pattern = "www.angazafuture.org"
+custom_domain = true
 
 [assets]
 directory = "./dist/public"
